@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="ShopSphere Admin Management Portal - CRUD inventory operations, sales statistics, and product analytics." />
+  <title>Admin Dashboard — ShopSphere</title>
+
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/components.css" />
+  <link rel="stylesheet" href="css/responsive.css" />
+</head>
+<body style="background: var(--slate-100);">
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <!-- Admin Top Bar -->
+  <header class="site-header" style="background: #ffffff;">
+    <div class="container nav-container">
+      <div style="display: flex; align-items: center; gap: 1rem;">
+        <a href="index.html" class="brand-logo">
+          <svg viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
+          </svg>
+          <span>Shop<span>Sphere</span></span>
+        </a>
+        <span class="badge badge-primary" style="font-size: 0.75rem;">ADMIN CONSOLE</span>
+      </div>
+
+      <nav class="desktop-only" aria-label="Admin Navigation">
+        <ul class="main-nav-links">
+          <li><a href="index.html" class="nav-link">&larr; Back to Storefront</a></li>
+          <li><a href="products.html" class="nav-link">Live Catalog</a></li>
+          <li><a href="dashboard.html" class="nav-link">Customer View</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <div id="user-nav-action"></div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Admin Content -->
+  <main id="main-content" style="padding: 2.5rem 0 5rem;">
+    <div class="container">
+      
+      <!-- Admin Welcome Banner -->
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2.5rem; flex-wrap: wrap; gap: 1rem;">
+        <div>
+          <h1 style="font-size: 1.85rem; font-weight: 800; color: var(--slate-900); margin-bottom: 0.25rem;">
+            Store Analytics & Inventory Management
+          </h1>
+          <p style="color: var(--slate-500); font-size: 0.875rem;">
+            Full CRUD operations synchronized with LocalStorage and mock REST services.
+          </p>
+        </div>
+
+        <button type="button" class="btn btn-primary btn-lg" id="admin-add-product-btn">
+          <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4" />
+          </svg>
+          Add New Product
+        </button>
+      </div>
+
+      <!-- KPI Statistics Grid -->
+      <div class="admin-stats-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1.25rem; margin-bottom: 2.5rem;">
+        
+        <div style="background: #ffffff; border: 1px solid var(--slate-200); border-radius: var(--radius-lg); padding: 1.25rem; box-shadow: var(--shadow-xs);">
+          <span style="font-size: 0.75rem; font-weight: 600; color: var(--slate-500); text-transform: uppercase;">Total Products</span>
+          <div id="stat-total-products" style="font-size: 1.75rem; font-weight: 800; color: var(--slate-900); margin-top: 0.25rem;">0</div>
+        </div>
+
+        <div style="background: #ffffff; border: 1px solid var(--slate-200); border-radius: var(--radius-lg); padding: 1.25rem; box-shadow: var(--shadow-xs);">
+          <span style="font-size: 0.75rem; font-weight: 600; color: var(--slate-500); text-transform: uppercase;">Active Categories</span>
+          <div id="stat-total-categories" style="font-size: 1.75rem; font-weight: 800; color: var(--slate-900); margin-top: 0.25rem;">0</div>
+        </div>
+
+        <div style="background: #ffffff; border: 1px solid var(--slate-200); border-radius: var(--radius-lg); padding: 1.25rem; box-shadow: var(--shadow-xs);">
+          <span style="font-size: 0.75rem; font-weight: 600; color: var(--slate-500); text-transform: uppercase;">Average Price</span>
+          <div id="stat-avg-price" style="font-size: 1.75rem; font-weight: 800; color: var(--primary-600); margin-top: 0.25rem;">$0.00</div>
+        </div>
+
+        <div style="background: #ffffff; border: 1px solid var(--slate-200); border-radius: var(--radius-lg); padding: 1.25rem; box-shadow: var(--shadow-xs);">
+          <span style="font-size: 0.75rem; font-weight: 600; color: var(--slate-500); text-transform: uppercase;">Low Stock (&lt;5)</span>
+          <div id="stat-low-stock" style="font-size: 1.75rem; font-weight: 800; color: var(--danger-600); margin-top: 0.25rem;">0</div>
+        </div>
+
+        <div style="background: #ffffff; border: 1px solid var(--slate-200); border-radius: var(--radius-lg); padding: 1.25rem; box-shadow: var(--shadow-xs);">
+          <span style="font-size: 0.75rem; font-weight: 600; color: var(--slate-500); text-transform: uppercase;">Total Simulated Revenue</span>
+          <div id="stat-total-revenue" style="font-size: 1.75rem; font-weight: 800; color: var(--success-600); margin-top: 0.25rem;">$0.00</div>
+        </div>
+
+        <div style="background: #ffffff; border: 1px solid var(--slate-200); border-radius: var(--radius-lg); padding: 1.25rem; box-shadow: var(--shadow-xs);">
+          <span style="font-size: 0.75rem; font-weight: 600; color: var(--slate-500); text-transform: uppercase;">Orders Processed</span>
+          <div id="stat-total-orders" style="font-size: 1.75rem; font-weight: 800; color: var(--slate-900); margin-top: 0.25rem;">0</div>
+        </div>
+      </div>
+
+      <!-- Analytics & Inventory Section -->
+      <div style="display: grid; grid-template-columns: 1fr 320px; gap: 2rem; align-items: start; margin-bottom: 2.5rem;">
+        
+        <!-- Products Table Container -->
+        <section style="background: #ffffff; border: 1px solid var(--slate-200); border-radius: var(--radius-xl); padding: 1.5rem; box-shadow: var(--shadow-sm);" aria-labelledby="inventory-heading">
+          
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.25rem; flex-wrap: wrap; gap: 1rem;">
+            <h2 id="inventory-heading" style="font-size: 1.25rem; font-weight: 700;">Catalog Inventory</h2>
+            
+            <div style="display: flex; gap: 0.75rem; flex-wrap: wrap;">
+              <input type="search" id="admin-product-search" class="form-input" placeholder="Search by title, ID..." style="width: 220px;" />
+              <select id="admin-category-filter" class="form-select" style="width: auto;">
+                <option value="all">All Categories</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="table-responsive">
+            <table class="data-table" aria-label="Product Inventory Table">
+              <thead>
+                <tr>
+                  <th scope="col">ID</th>
+                  <th scope="col">Photo</th>
+                  <th scope="col">Product Title</th>
+                  <th scope="col">Price</th>
+                  <th scope="col">Rating</th>
+                  <th scope="col">Stock Status</th>
+                  <th scope="col">Actions</th>
+                </tr>
+              </thead>
+              <tbody id="admin-product-table-body">
+                <!-- Injected via JavaScript -->
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- Category Distribution Chart Card -->
+        <aside style="background: #ffffff; border: 1px solid var(--slate-200); border-radius: var(--radius-xl); padding: 1.5rem; box-shadow: var(--shadow-sm);" aria-label="Category Distribution">
+          <h2 style="font-size: 1.15rem; font-weight: 700; margin-bottom: 1.25rem; border-bottom: 1px solid var(--slate-100); padding-bottom: 0.75rem;">
+            Category Distribution
+          </h2>
+          <div id="admin-category-breakdown">
+            <!-- Rendered by JavaScript -->
+          </div>
+        </aside>
+      </div>
+    </div>
+  </main>
+
+  <!-- Add / Edit Product Modal -->
+  <dialog class="modal" id="admin-product-modal" aria-labelledby="admin-modal-title" style="max-width: 640px;">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title" id="admin-modal-title">Add New Product</h2>
+        <button type="button" class="modal-close-btn" aria-label="Close modal">
+          <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
+      </div>
+
+      <form id="admin-product-form">
+        <div class="modal-body">
+          <input type="hidden" id="prod-id" />
+
+          <div class="form-group">
+            <label class="form-label" for="prod-title">Product Title *</label>
+            <input type="text" id="prod-title" class="form-input" required placeholder="e.g. Wireless Noise Canceling Headphones" />
+          </div>
+
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+            <div class="form-group">
+              <label class="form-label" for="prod-category">Category *</label>
+              <input type="text" id="prod-category" class="form-input" required placeholder="electronics, jewelery, etc." />
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="prod-price">Price ($ USD) *</label>
+              <input type="number" id="prod-price" class="form-input" required step="0.01" min="0.01" placeholder="49.99" />
+            </div>
+          </div>
+
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+            <div class="form-group">
+              <label class="form-label" for="prod-stock">Units in Stock *</label>
+              <input type="number" id="prod-stock" class="form-input" required min="0" value="15" />
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="prod-rating">Initial Rating (1-5)</label>
+              <input type="number" id="prod-rating" class="form-input" step="0.1" min="1" max="5" value="4.5" />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="prod-image">Image URL</label>
+            <input type="url" id="prod-image" class="form-input" placeholder="https://images.unsplash.com/..." />
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="prod-description">Product Description *</label>
+            <textarea id="prod-description" class="form-textarea" rows="4" required placeholder="Detailed specifications and features"></textarea>
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary modal-cancel-btn">Cancel</button>
+          <button type="submit" class="btn btn-primary" id="prod-save-btn">Save Product</button>
+        </div>
+      </form>
+    </div>
+  </dialog>
+
+  <!-- Delete Confirmation Modal -->
+  <dialog class="modal" id="admin-delete-modal" aria-labelledby="admin-delete-title">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title" id="admin-delete-title">Delete Product?</h2>
+        <button type="button" class="modal-close-btn" aria-label="Close modal">
+          <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p style="margin-bottom: 0.75rem;">Are you sure you want to permanently delete this product from your inventory?</p>
+        <div id="delete-product-name" style="font-weight: 700; color: var(--slate-900); padding: 0.75rem; background: var(--slate-50); border-radius: var(--radius-md); border: 1px solid var(--slate-200);"></div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary modal-cancel-btn">Cancel</button>
+        <button type="button" class="btn btn-danger" id="admin-confirm-delete-btn">Permanently Delete</button>
+      </div>
+    </div>
+  </dialog>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-bottom">
+        <div>&copy; 2026 ShopSphere E-Commerce. All rights reserved.</div>
+        <div class="footer-badges">
+          <span class="sim-notice">🔒 Simulated Production Environment</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Script Logic -->
+  <script type="module">
+    import { initApp } from './js/app.js';
+    import { requireAuth } from './js/auth.js';
+    import { AdminDashboard } from './js/admin.js';
+
+    document.addEventListener('DOMContentLoaded', () => {
+      // Guard route: must be logged in as admin
+      const user = requireAuth({ adminOnly: true });
+      if (!user) return;
+
+      initApp();
+      const admin = new AdminDashboard();
+      admin.init();
+    });
+  </script>
+</body>
+</html>

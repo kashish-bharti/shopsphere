@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="ShopSphere - Modern, responsive, and accessible E-Commerce storefront featuring premium electronics, fashion, and jewelry." />
+  <title>ShopSphere — Modern E-Commerce Storefront</title>
+  
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/components.css" />
+  <link rel="stylesheet" href="css/responsive.css" />
+</head>
+<body>
+  <!-- Accessible Skip Link -->
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <!-- Top Announcement Bar -->
+  <div class="announcement-bar">
+    <div class="container">
+      ✨ <strong>Special Launch Offer:</strong> Free Express Shipping on orders over $50! Use code <span class="badge-promo">FREESHIP</span>
+    </div>
+  </div>
+
+  <!-- Site Header -->
+  <header class="site-header">
+    <div class="container nav-container">
+      <!-- Mobile Drawer Toggle -->
+      <button type="button" class="mobile-toggle-btn" id="mobile-drawer-toggle" aria-label="Open navigation menu">
+        <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
+
+      <!-- Brand Logo -->
+      <a href="index.html" class="brand-logo" aria-label="ShopSphere Home">
+        <svg viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
+        </svg>
+        <span>Shop<span>Sphere</span></span>
+      </a>
+
+      <!-- Desktop Navigation -->
+      <nav class="desktop-only" aria-label="Main Navigation">
+        <ul class="main-nav-links">
+          <li><a href="index.html" class="nav-link active">Home</a></li>
+          <li><a href="products.html" class="nav-link">Products</a></li>
+          <li><a href="products.html?category=electronics" class="nav-link">Electronics</a></li>
+          <li><a href="products.html?category=women's%20clothing" class="nav-link">Women</a></li>
+          <li><a href="products.html?category=men's%20clothing" class="nav-link">Men</a></li>
+        </ul>
+      </nav>
+
+      <!-- Real-time Search -->
+      <form class="header-search" id="header-search-form" role="search">
+        <svg class="header-search-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+        </svg>
+        <input type="search" id="header-search-input" placeholder="Search products, brands, categories..." aria-label="Search products" autocomplete="off" />
+      </form>
+
+      <!-- Actions (Wishlist, Cart, User) -->
+      <div class="header-actions">
+        <!-- Wishlist -->
+        <a href="wishlist.html" class="action-btn" aria-label="View Wishlist">
+          <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+          </svg>
+          <span class="action-badge wishlist-count-badge" style="display: none;">0</span>
+        </a>
+
+        <!-- Cart -->
+        <a href="cart.html" class="action-btn" aria-label="View Shopping Cart">
+          <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+          </svg>
+          <span class="action-badge cart-count-badge" style="display: none;">0</span>
+        </a>
+
+        <!-- User Authentication Widget -->
+        <div id="user-nav-action">
+          <a href="login.html" class="btn btn-outline btn-sm">Sign In</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Navigation Drawer -->
+  <div class="mobile-drawer-backdrop" id="mobile-drawer-backdrop">
+    <div class="mobile-drawer" role="dialog" aria-modal="true" aria-label="Mobile Navigation">
+      <div class="mobile-drawer-header">
+        <a href="index.html" class="brand-logo">
+          <svg viewBox="0 0 24 24" fill="currentColor" width="24" height="24">
+            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
+          </svg>
+          <span>Shop<span>Sphere</span></span>
+        </a>
+        <button type="button" class="mobile-drawer-close" id="mobile-drawer-close" aria-label="Close menu">
+          <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+      <div class="mobile-drawer-body">
+        <div id="mobile-drawer-user"></div>
+        <ul class="mobile-nav-list">
+          <li class="mobile-nav-item"><a href="index.html" class="active">Home</a></li>
+          <li class="mobile-nav-item"><a href="products.html">All Products</a></li>
+          <li class="mobile-nav-item"><a href="products.html?category=electronics">Electronics</a></li>
+          <li class="mobile-nav-item"><a href="products.html?category=jewelery">Jewelry</a></li>
+          <li class="mobile-nav-item"><a href="products.html?category=men's%20clothing">Men's Clothing</a></li>
+          <li class="mobile-nav-item"><a href="products.html?category=women's%20clothing">Women's Clothing</a></li>
+          <li class="mobile-nav-item"><a href="wishlist.html">My Wishlist</a></li>
+          <li class="mobile-nav-item"><a href="cart.html">Shopping Cart</a></li>
+          <li class="mobile-nav-item"><a href="dashboard.html">My Account</a></li>
+          <li class="mobile-nav-item"><a href="admin.html">Admin Dashboard</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <main id="main-content">
+    <!-- Hero Section -->
+    <section class="hero-section" style="background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 50%, #312e81 100%); color: #ffffff; padding: 5rem 0 6rem; position: relative; overflow: hidden;">
+      <div class="container" style="display: grid; grid-template-columns: 1.2fr 0.8fr; align-items: center; gap: 3rem;">
+        <div>
+          <span style="display: inline-block; background: rgba(99, 102, 241, 0.25); color: #c7d2fe; font-size: 0.8125rem; font-weight: 700; padding: 0.35rem 0.85rem; border-radius: var(--radius-full); margin-bottom: 1.25rem; letter-spacing: 0.05em; text-transform: uppercase; border: 1px solid rgba(199, 210, 254, 0.3);">
+            Next-Gen E-Commerce Experience
+          </span>
+          <h1 style="color: #ffffff; margin-bottom: 1.25rem; font-weight: 800;">
+            Curated Essentials For Modern Living
+          </h1>
+          <p style="color: #cbd5e1; font-size: 1.125rem; margin-bottom: 2.25rem; max-width: 520px; line-height: 1.6;">
+            Discover hand-picked electronics, high-grade apparel, and timeless jewelry. Experience instant filtering, simulated checkout, and reliable delivery.
+          </p>
+          <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+            <a href="products.html" class="btn btn-primary btn-lg" style="box-shadow: 0 4px 14px rgba(79, 70, 229, 0.4);">
+              Explore Catalog
+              <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+              </svg>
+            </a>
+            <a href="products.html?category=electronics" class="btn btn-secondary btn-lg" style="background: rgba(255, 255, 255, 0.1); color: #ffffff; border-color: rgba(255, 255, 255, 0.2);">
+              Trending Electronics
+            </a>
+          </div>
+        </div>
+        <div class="desktop-only" style="position: relative;">
+          <div style="background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.15); border-radius: var(--radius-xl); padding: 1.5rem; backdrop-filter: blur(12px); box-shadow: var(--shadow-xl);">
+            <img src="https://fakestoreapi.com/img/81Zt42ioCgL._AC_SX679_.jpg" alt="Curved Gaming Monitor Showcase" style="border-radius: var(--radius-lg); width: 100%; object-fit: contain; max-height: 280px; background: #ffffff; padding: 1rem;" />
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 1.25rem;">
+              <div>
+                <span style="font-size: 0.75rem; color: #94a3b8; text-transform: uppercase;">Featured Tech</span>
+                <h3 style="color: #ffffff; font-size: 1.1rem; margin-top: 2px;">Samsung 49" QLED Curved Display</h3>
+              </div>
+              <span style="font-size: 1.25rem; font-weight: 800; color: #a5b4fc;">$999.99</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Trust Highlights Banner -->
+    <section style="background: #ffffff; border-bottom: 1px solid var(--slate-200); padding: 2rem 0;">
+      <div class="container" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem;">
+        <div style="display: flex; align-items: center; gap: 1rem;">
+          <div style="width: 44px; height: 44px; border-radius: var(--radius-full); background: var(--primary-50); color: var(--primary-600); display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+            <svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4" /></svg>
+          </div>
+          <div>
+            <h4 style="font-size: 0.9375rem; font-weight: 700;">Free Express Delivery</h4>
+            <p style="font-size: 0.8125rem; color: var(--slate-500);">On all orders over $50</p>
+          </div>
+        </div>
+
+        <div style="display: flex; align-items: center; gap: 1rem;">
+          <div style="width: 44px; height: 44px; border-radius: var(--radius-full); background: var(--success-50); color: var(--success-600); display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+            <svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" /></svg>
+          </div>
+          <div>
+            <h4 style="font-size: 0.9375rem; font-weight: 700;">Simulated Secure Checkout</h4>
+            <p style="font-size: 0.8125rem; color: var(--slate-500);">Zero-risk demo transactions</p>
+          </div>
+        </div>
+
+        <div style="display: flex; align-items: center; gap: 1rem;">
+          <div style="width: 44px; height: 44px; border-radius: var(--radius-full); background: var(--warning-50); color: var(--warning-600); display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+            <svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" /></svg>
+          </div>
+          <div>
+            <h4 style="font-size: 0.9375rem; font-weight: 700;">30-Day Hassle-Free Returns</h4>
+            <p style="font-size: 0.8125rem; color: var(--slate-500);">Money-back guarantee</p>
+          </div>
+        </div>
+
+        <div style="display: flex; align-items: center; gap: 1rem;">
+          <div style="width: 44px; height: 44px; border-radius: var(--radius-full); background: var(--primary-50); color: var(--primary-600); display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+            <svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z" /></svg>
+          </div>
+          <div>
+            <h4 style="font-size: 0.9375rem; font-weight: 700;">24/7 Priority Support</h4>
+            <p style="font-size: 0.8125rem; color: var(--slate-500);">Always here for assistance</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Categories Grid -->
+    <section style="padding: 4.5rem 0;">
+      <div class="container">
+        <div style="text-align: center; max-width: 600px; margin: 0 auto 3rem;">
+          <h2 style="margin-bottom: 0.75rem;">Browse by Category</h2>
+          <p>Explore our carefully categorized collections designed to elevate your everyday lifestyle.</p>
+        </div>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.5rem;">
+          <!-- Category 1 -->
+          <a href="products.html?category=electronics" style="background: #ffffff; border: 1px solid var(--slate-200); border-radius: var(--radius-xl); padding: 2rem; text-align: center; text-decoration: none; transition: all var(--transition-normal); display: block;" class="product-card">
+            <div style="width: 60px; height: 60px; margin: 0 auto 1.25rem; background: var(--primary-50); color: var(--primary-600); border-radius: var(--radius-full); display: flex; align-items: center; justify-content: center;">
+              <svg width="28" height="28" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
+            </div>
+            <h3 style="font-size: 1.15rem; color: var(--slate-900); margin-bottom: 0.35rem;">Electronics</h3>
+            <p style="font-size: 0.8125rem; color: var(--slate-500);">Monitors, SSDs, Drives & Gadgets</p>
+          </a>
+
+          <!-- Category 2 -->
+          <a href="products.html?category=jewelery" style="background: #ffffff; border: 1px solid var(--slate-200); border-radius: var(--radius-xl); padding: 2rem; text-align: center; text-decoration: none; transition: all var(--transition-normal); display: block;" class="product-card">
+            <div style="width: 60px; height: 60px; margin: 0 auto 1.25rem; background: var(--warning-50); color: var(--warning-600); border-radius: var(--radius-full); display: flex; align-items: center; justify-content: center;">
+              <svg width="28" height="28" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+            </div>
+            <h3 style="font-size: 1.15rem; color: var(--slate-900); margin-bottom: 0.35rem;">Jewelry</h3>
+            <p style="font-size: 0.8125rem; color: var(--slate-500);">Gold, Silver, Rings & Luxury Accents</p>
+          </a>
+
+          <!-- Category 3 -->
+          <a href="products.html?category=men's%20clothing" style="background: #ffffff; border: 1px solid var(--slate-200); border-radius: var(--radius-xl); padding: 2rem; text-align: center; text-decoration: none; transition: all var(--transition-normal); display: block;" class="product-card">
+            <div style="width: 60px; height: 60px; margin: 0 auto 1.25rem; background: var(--success-50); color: var(--success-600); border-radius: var(--radius-full); display: flex; align-items: center; justify-content: center;">
+              <svg width="28" height="28" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" /></svg>
+            </div>
+            <h3 style="font-size: 1.15rem; color: var(--slate-900); margin-bottom: 0.35rem;">Men's Apparel</h3>
+            <p style="font-size: 0.8125rem; color: var(--slate-500);">Jackets, Henleys, Casual Tees & Packs</p>
+          </a>
+
+          <!-- Category 4 -->
+          <a href="products.html?category=women's%20clothing" style="background: #ffffff; border: 1px solid var(--slate-200); border-radius: var(--radius-xl); padding: 2rem; text-align: center; text-decoration: none; transition: all var(--transition-normal); display: block;" class="product-card">
+            <div style="width: 60px; height: 60px; margin: 0 auto 1.25rem; background: #fdf2f8; color: #db2777; border-radius: var(--radius-full); display: flex; align-items: center; justify-content: center;">
+              <svg width="28" height="28" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" /></svg>
+            </div>
+            <h3 style="font-size: 1.15rem; color: var(--slate-900); margin-bottom: 0.35rem;">Women's Fashion</h3>
+            <p style="font-size: 0.8125rem; color: var(--slate-500);">Outerwear, Moisture Tees & Chic Tops</p>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Featured Products Section -->
+    <section style="background: #ffffff; padding: 4.5rem 0; border-top: 1px solid var(--slate-200); border-bottom: 1px solid var(--slate-200);">
+      <div class="container">
+        <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 2.5rem; flex-wrap: wrap; gap: 1rem;">
+          <div>
+            <span style="font-size: 0.8125rem; font-weight: 700; color: var(--primary-600); text-transform: uppercase; letter-spacing: 0.05em;">Handpicked Selections</span>
+            <h2 style="margin-top: 0.25rem;">Featured Products</h2>
+          </div>
+          <a href="products.html" class="btn btn-outline btn-sm">
+            View All Products &rarr;
+          </a>
+        </div>
+
+        <div id="home-featured-grid" class="products-grid">
+          <!-- Populated by JavaScript -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Promotional Banner Section -->
+    <section style="padding: 4.5rem 0;">
+      <div class="container">
+        <div style="background: linear-gradient(135deg, var(--primary-700) 0%, var(--primary-900) 100%); border-radius: var(--radius-xl); padding: 3.5rem 2.5rem; color: #ffffff; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 2rem; box-shadow: var(--shadow-lg);">
+          <div style="max-width: 580px;">
+            <span style="background: rgba(255, 255, 255, 0.2); padding: 0.25rem 0.75rem; border-radius: var(--radius-full); font-size: 0.75rem; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase;">
+              Limited Time Special
+            </span>
+            <h2 style="color: #ffffff; font-size: clamp(1.75rem, 3vw, 2.25rem); margin: 0.75rem 0 1rem; font-weight: 800;">
+              Get 20% Off Your Entire First Order
+            </h2>
+            <p style="color: #e0e7ff; font-size: 1rem; margin-bottom: 1.75rem;">
+              Use voucher code <strong style="color: #ffffff; font-family: var(--font-mono); background: rgba(0,0,0,0.25); padding: 0.2rem 0.5rem; border-radius: var(--radius-sm);">WELCOME20</strong> during simulated checkout to claim instant discounts.
+            </p>
+            <a href="products.html" class="btn btn-secondary btn-lg" style="background: #ffffff; color: var(--primary-900);">
+              Claim Discount Now
+            </a>
+          </div>
+          <div class="desktop-only" style="text-align: center; background: rgba(255, 255, 255, 0.1); border-radius: var(--radius-lg); padding: 2rem 2.5rem; border: 1px solid rgba(255, 255, 255, 0.2);">
+            <div style="font-size: 2.5rem; font-weight: 800; line-height: 1;">20%</div>
+            <div style="font-size: 0.875rem; text-transform: uppercase; letter-spacing: 0.1em; color: #c7d2fe; margin-top: 0.25rem;">Instant Savings</div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Site Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="brand-logo">
+            <svg viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
+            </svg>
+            <span>Shop<span>Sphere</span></span>
+          </a>
+          <p>
+            A production-ready e-commerce platform built with modern HTML5, CSS3, and ES6+ JavaScript modules. Demonstrates state persistence, simulated authentication, and CRUD operations.
+          </p>
+          <div class="footer-social-links">
+            <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="GitHub">
+              <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h3>Quick Links</h3>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="products.html">Product Catalog</a></li>
+            <li><a href="wishlist.html">Wishlist</a></li>
+            <li><a href="cart.html">Shopping Cart</a></li>
+            <li><a href="dashboard.html">Customer Dashboard</a></li>
+            <li><a href="admin.html">Admin Management</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h3>Categories</h3>
+          <ul class="footer-links">
+            <li><a href="products.html?category=electronics">Electronics</a></li>
+            <li><a href="products.html?category=jewelery">Jewelry</a></li>
+            <li><a href="products.html?category=men's%20clothing">Men's Clothing</a></li>
+            <li><a href="products.html?category=women's%20clothing">Women's Clothing</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h3>Stay Updated</h3>
+          <p style="font-size: 0.8125rem; color: var(--slate-400); margin-bottom: 1rem;">
+            Subscribe to our newsletter for new product drops and exclusive coupon codes.
+          </p>
+          <form class="newsletter-form" id="newsletter-form">
+            <div class="newsletter-input-group">
+              <input type="email" placeholder="Enter your email" required aria-label="Email for newsletter" />
+              <button type="submit">Join</button>
+            </div>
+            <small>Zero spam. Unsubscribe anytime.</small>
+          </form>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>
+          &copy; 2026 ShopSphere E-Commerce. All rights reserved.
+        </div>
+        <div class="footer-badges">
+          <span class="sim-notice">
+            🔒 Simulated Production Environment
+          </span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Mobile Bottom Navigation Bar -->
+  <nav class="mobile-bottom-bar" aria-label="Mobile Bottom Navigation">
+    <a href="index.html" class="mobile-tab-btn active">
+      <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
+      <span>Home</span>
+    </a>
+    <a href="products.html" class="mobile-tab-btn">
+      <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"/></svg>
+      <span>Shop</span>
+    </a>
+    <a href="wishlist.html" class="mobile-tab-btn">
+      <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>
+      <span class="mobile-tab-badge wishlist-count-badge" style="display: none;">0</span>
+      <span>Wishlist</span>
+    </a>
+    <a href="cart.html" class="mobile-tab-btn">
+      <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg>
+      <span class="mobile-tab-badge cart-count-badge" style="display: none;">0</span>
+      <span>Cart</span>
+    </a>
+    <a href="dashboard.html" class="mobile-tab-btn">
+      <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg>
+      <span>Account</span>
+    </a>
+  </nav>
+
+  <!-- Page Logic Script -->
+  <script type="module">
+    import { initApp } from './js/app.js';
+    import { getProducts } from './js/api.js';
+    import { createProductCardHTML } from './js/products.js';
+    import { renderProductSkeletons } from './js/ui.js';
+    import { addToCart } from './js/cart.js';
+    import { toggleWishlist } from './js/wishlist.js';
+
+    document.addEventListener('DOMContentLoaded', async () => {
+      initApp();
+
+      const featuredContainer = document.getElementById('home-featured-grid');
+      if (featuredContainer) {
+        renderProductSkeletons(featuredContainer, 4);
+        const products = await getProducts();
+        const featured = products.filter(p => p.isFeatured || (p.rating && p.rating.rate >= 4.5)).slice(0, 4);
+        featuredContainer.innerHTML = featured.map(p => createProductCardHTML(p)).join('');
+
+        // Event delegation for Home cards
+        featuredContainer.addEventListener('click', (e) => {
+          const cartBtn = e.target.closest('.add-to-cart-btn');
+          if (cartBtn) {
+            const id = Number(cartBtn.getAttribute('data-id'));
+            const prod = products.find(p => p.id === id);
+            if (prod) addToCart(prod, 1);
+            return;
+          }
+
+          const wishBtn = e.target.closest('.wishlist-toggle-btn');
+          if (wishBtn) {
+            const id = Number(wishBtn.getAttribute('data-id'));
+            const prod = products.find(p => p.id === id);
+            if (prod) {
+              const added = toggleWishlist(prod);
+              wishBtn.classList.toggle('active', added);
+              const svg = wishBtn.querySelector('svg');
+              if (svg) svg.setAttribute('fill', added ? 'currentColor' : 'none');
+            }
+          }
+        });
+      }
+    });
+  </script>
+</body>
+</html>

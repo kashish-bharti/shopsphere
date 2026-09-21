@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="View and manage your saved wishlist products on ShopSphere." />
+  <title>Your Wishlist — ShopSphere</title>
+
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/components.css" />
+  <link rel="stylesheet" href="css/responsive.css" />
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="container nav-container">
+      <button type="button" class="mobile-toggle-btn" id="mobile-drawer-toggle" aria-label="Open navigation menu">
+        <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
+
+      <a href="index.html" class="brand-logo" aria-label="ShopSphere Home">
+        <svg viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
+        </svg>
+        <span>Shop<span>Sphere</span></span>
+      </a>
+
+      <nav class="desktop-only" aria-label="Main Navigation">
+        <ul class="main-nav-links">
+          <li><a href="index.html" class="nav-link">Home</a></li>
+          <li><a href="products.html" class="nav-link">Products</a></li>
+          <li><a href="wishlist.html" class="nav-link active">Wishlist</a></li>
+          <li><a href="cart.html" class="nav-link">Cart</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <a href="wishlist.html" class="action-btn" aria-label="View Wishlist">
+          <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+          </svg>
+          <span class="action-badge wishlist-count-badge" style="display: none;">0</span>
+        </a>
+
+        <a href="cart.html" class="action-btn" aria-label="View Shopping Cart">
+          <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+          </svg>
+          <span class="action-badge cart-count-badge" style="display: none;">0</span>
+        </a>
+
+        <div id="user-nav-action">
+          <a href="login.html" class="btn btn-outline btn-sm">Sign In</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer -->
+  <div class="mobile-drawer-backdrop" id="mobile-drawer-backdrop">
+    <div class="mobile-drawer" role="dialog" aria-modal="true" aria-label="Mobile Navigation">
+      <div class="mobile-drawer-header">
+        <a href="index.html" class="brand-logo">
+          <svg viewBox="0 0 24 24" fill="currentColor" width="24" height="24">
+            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
+          </svg>
+          <span>Shop<span>Sphere</span></span>
+        </a>
+        <button type="button" class="mobile-drawer-close" id="mobile-drawer-close" aria-label="Close menu">
+          <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+      <div class="mobile-drawer-body">
+        <div id="mobile-drawer-user"></div>
+        <ul class="mobile-nav-list">
+          <li class="mobile-nav-item"><a href="index.html">Home</a></li>
+          <li class="mobile-nav-item"><a href="products.html">All Products</a></li>
+          <li class="mobile-nav-item"><a href="wishlist.html" class="active">Wishlist</a></li>
+          <li class="mobile-nav-item"><a href="cart.html">Cart</a></li>
+          <li class="mobile-nav-item"><a href="dashboard.html">My Account</a></li>
+          <li class="mobile-nav-item"><a href="admin.html">Admin Dashboard</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <main id="main-content" style="padding: 2.5rem 0 5rem;">
+    <div class="container">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem; flex-wrap: wrap; gap: 1rem;">
+        <div>
+          <h1 style="font-size: 2rem; font-weight: 800; margin-bottom: 0.25rem;">My Wishlist</h1>
+          <p style="color: var(--slate-500); font-size: 0.875rem;" id="wishlist-count-text">Saved items</p>
+        </div>
+        <button type="button" class="btn btn-primary" id="btn-move-all-to-cart" style="display: none;">
+          Move All to Cart
+        </button>
+      </div>
+
+      <div id="wishlist-root">
+        <!-- Injected via JavaScript -->
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-bottom">
+        <div>&copy; 2026 ShopSphere E-Commerce. All rights reserved.</div>
+        <div class="footer-badges">
+          <span class="sim-notice">🔒 Simulated Production Environment</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Mobile Bottom Nav -->
+  <nav class="mobile-bottom-bar" aria-label="Mobile Bottom Navigation">
+    <a href="index.html" class="mobile-tab-btn">
+      <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
+      <span>Home</span>
+    </a>
+    <a href="products.html" class="mobile-tab-btn">
+      <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"/></svg>
+      <span>Shop</span>
+    </a>
+    <a href="wishlist.html" class="mobile-tab-btn active">
+      <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>
+      <span class="mobile-tab-badge wishlist-count-badge" style="display: none;">0</span>
+      <span>Wishlist</span>
+    </a>
+    <a href="cart.html" class="mobile-tab-btn">
+      <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg>
+      <span class="mobile-tab-badge cart-count-badge" style="display: none;">0</span>
+      <span>Cart</span>
+    </a>
+    <a href="dashboard.html" class="mobile-tab-btn">
+      <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg>
+      <span>Account</span>
+    </a>
+  </nav>
+
+  <!-- Script Logic -->
+  <script type="module">
+    import { initApp } from './js/app.js';
+    import { getWishlist } from './js/storage.js';
+    import { removeFromWishlist, moveWishlistItemToCart, moveAllWishlistToCart } from './js/wishlist.js';
+    import { renderStars } from './js/ui.js';
+    import { escapeHTML, formatCurrency } from './validation.js';
+
+    document.addEventListener('DOMContentLoaded', () => {
+      initApp();
+      renderWishlistView();
+
+      const moveAllBtn = document.getElementById('btn-move-all-to-cart');
+      if (moveAllBtn) {
+        moveAllBtn.addEventListener('click', () => {
+          moveAllWishlistToCart();
+          renderWishlistView();
+        });
+      }
+    });
+
+    function renderWishlistView() {
+      const container = document.getElementById('wishlist-root');
+      const countText = document.getElementById('wishlist-count-text');
+      const moveAllBtn = document.getElementById('btn-move-all-to-cart');
+      const wishlist = getWishlist();
+
+      if (countText) {
+        countText.textContent = `${wishlist.length} saved ${wishlist.length === 1 ? 'item' : 'items'}`;
+      }
+
+      if (wishlist.length === 0) {
+        if (moveAllBtn) moveAllBtn.style.display = 'none';
+        container.innerHTML = `
+          <div class="state-box">
+            <div class="state-icon state-empty">
+              <svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>
+            </div>
+            <h2 class="state-title">Your Wishlist is Empty</h2>
+            <p class="state-desc">Save items you love by tapping the heart icon on any product card.</p>
+            <a href="products.html" class="btn btn-primary btn-lg">Discover Products</a>
+          </div>
+        `;
+        return;
+      }
+
+      if (moveAllBtn) moveAllBtn.style.display = 'inline-flex';
+
+      container.innerHTML = `
+        <div class="products-grid">
+          ${wishlist.map(item => `
+            <article class="product-card" data-id="${item.id}">
+              <div class="product-image-wrap">
+                <button type="button" class="item-remove-wish-btn" data-id="${item.id}" aria-label="Remove from wishlist" style="position: absolute; top: 0.75rem; right: 0.75rem; width: 34px; height: 34px; border-radius: var(--radius-full); background: #ffffff; border: 1px solid var(--slate-200); color: var(--danger-600); display: flex; align-items: center; justify-content: center; cursor: pointer; z-index: 2;">
+                  <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+                </button>
+                <a href="product-details.html?id=${item.id}">
+                  <img src="${escapeHTML(item.image)}" alt="${escapeHTML(item.title)}" loading="lazy" />
+                </a>
+              </div>
+              <div class="product-info">
+                <span class="product-category">${escapeHTML(item.category || '')}</span>
+                <h3 class="product-title">
+                  <a href="product-details.html?id=${item.id}">${escapeHTML(item.title)}</a>
+                </h3>
+                <div class="product-rating">
+                  ${renderStars(item.rating ? item.rating.rate : 4.5)}
+                  <span class="rating-count">(${item.rating ? item.rating.count : 50})</span>
+                </div>
+                <div class="product-price-row">
+                  <span class="current-price">${formatCurrency(item.price)}</span>
+                </div>
+                <div class="product-card-actions">
+                  <button type="button" class="btn btn-primary btn-sm btn-block move-to-cart-btn" data-id="${item.id}">
+                    <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg>
+                    Move to Cart
+                  </button>
+                </div>
+              </div>
+            </article>
+          `).join('')}
+        </div>
+      `;
+
+      // Event delegation
+      container.querySelectorAll('.move-to-cart-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const id = Number(btn.getAttribute('data-id'));
+          moveWishlistItemToCart(id);
+          renderWishlistView();
+        });
+      });
+
+      container.querySelectorAll('.item-remove-wish-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const id = Number(btn.getAttribute('data-id'));
+          removeFromWishlist(id);
+          renderWishlistView();
+        });
+      });
+    }
+  </script>
+</body>
+</html>
