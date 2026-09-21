@@ -1,0 +1,23 @@
+{
+  "name": "shopsphere",
+  "version": "1.0.0",
+  "description": "Production Capstone Project - Full-Stack E-Commerce Web Application",
+  "main": "index.html",
+  "type": "module",
+  "scripts": {
+    "start": "npx serve . -p 8080",
+    "dev": "npx serve . -p 8080",
+    "test": "node tests/test-suite.js"
+  },
+  "keywords": [
+    "ecommerce",
+    "vanilla-js",
+    "production-capstone",
+    "responsive",
+    "accessibility",
+    "fakestoreapi",
+    "crud"
+  ],
+  "author": "ShopSphere Team",
+  "license": "MIT"
+}
